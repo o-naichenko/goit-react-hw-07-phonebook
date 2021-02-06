@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import contactsActions from '../../redux/contacts/contacts-actions';
+import { contactsOperations } from 'redux/contacts';
 import s from './Contact.module.css';
 
 const Contact = ({ contact }) => {
@@ -13,7 +13,7 @@ const Contact = ({ contact }) => {
         className={s.deleteBtn}
         type="button"
         id={contact.id}
-        onClick={e => dispatch(contactsActions.deleteContact(e.target.id))}
+        onClick={e => dispatch(contactsOperations.deleteContact(e.target.id))}
       >
         Delete
       </button>
@@ -25,7 +25,7 @@ Contact.propTypes = {
   contact: PropTypes.shape({
     name: PropTypes.string.isRequired,
     number: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
   }),
 };
 
